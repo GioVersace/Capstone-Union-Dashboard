@@ -1,11 +1,11 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div>
       <h1 className="text-3xl font-bold underline">
-      Hello world!
+      Welcome to the Student Union Dashboard!
     </h1>
     </div>
   );
