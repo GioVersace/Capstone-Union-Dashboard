@@ -10,19 +10,19 @@ const Home = () => {
 
     useEffect(() => {
       const fetchExamples = async () => {
-        const { data,error } = await supabase
+        const { data,error } = await supabase// pulls from the database
         .from('example_data')
         .select()
 
         if (error){
           setFetchError('Could not retrieve data')
-          setExamples(null)
+          setExamples(null)// if there is an error we do not want to display anything to the screen
           console.log(error)
         }
 
         if(data){
           setExamples(data);
-          setFetchError(null);
+          setFetchError(null);// resets the error to null if db retrieval is successful
         }
       }
 

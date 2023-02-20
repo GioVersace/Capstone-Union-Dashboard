@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom"
 import supabase from "../config/supabaseClient"
 
 const Create = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate()// used to reroute the user to another page
 
+
+  /* Variables for db row */
   const [expenses, setExpenses] = useState('')
   const [projAmnt, setProjAmnt] = useState('')
   const [amntSpent, setAmntSpent] = useState('')
@@ -14,15 +16,19 @@ const Create = () => {
   const [cardUsed, setCardUsed] = useState('')
   const [formError, setFormError] = useState('')
 
+
+/* Method to handle how the form deals with submits and errors that could occur */
   const handleSubmit = async (e) =>{
     e.preventDefault()
 
+
+    // if there is a piece of information that is missing it wont send it to the db to be added
     if(!expenses || !projAmnt || !amntSpent || !date || !refCode || !recCollected || !cardUsed){
       setFormError('Please fill in all fields correctly')
       return
     }
     
-    const { data, error } = await supabase
+    const { data, error } = await supabase// connect to the db and send the data
       .from('example_data')
       .insert([{ expenses, projAmnt, amntSpent, date, refCode, recCollected, cardUsed }])
 
@@ -31,7 +37,7 @@ const Create = () => {
       setFormError('Please fill in all fields correctly')
     }
 
-    if(data){
+    if(data){// sends the data to the db and should reroute the user to the home page
       console.log(data)
       setFormError(null)
       navigate('/')
@@ -42,7 +48,10 @@ const Create = () => {
 
     return (
       <div className="page create">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}> {/* Form that uses the function above to handle the submit */}
+
+        {/* Each of the labels handles an individual column in the db */}
+
         <label htmlFor="expenses">Expense:</label>
         <input 
           type="text" 
@@ -50,6 +59,7 @@ const Create = () => {
           value={expenses}
           onChange={(e) => setExpenses(e.target.value)}
         />
+
 
         <label htmlFor="projAmnt">Projected Amount:</label>
         <input

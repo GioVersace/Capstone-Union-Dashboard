@@ -3,6 +3,8 @@
 const exampleCard = ({ example }) => {
     return (
         <div className="example-card">
+            {/* Each of the p's below handles an individual column in the db */}
+
             <h3>Expenses: { example.expenses }</h3>
             <p>Projected Amount: { example.projAmnt }</p>
             <p>Amount Spent: { example.amntSpent }</p>
