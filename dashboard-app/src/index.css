@@ -2,16 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+:root {
+  --primary: #12bca2;
+  --secondary: #6d15df;
+}
+h1,h2,h3 {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  color: #333;
+  font-family: 'Poppins';
+  background: #f2f2f2;
+}
+nav {
+  background: var(--primary);
+  padding: 10px 20px;
+  text-align: center;
+}
+nav a {
+  color: #f2f2f2;
+  margin: 10px;
+  display: inline-block;
+}
+nav h1 {
+  color: #fff;
+}
+.page {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* forms */
+form {
+  background: #fff;
+  padding: 20px;
+  max-width: 480px;
+  margin: 0 auto;
+  border-radius: 6px;
+}
+form input, form textarea {
+  display: block;
+  width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  margin: 10px 0 20px 0;
+}
+form button {
+  background: green;
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-family: "Poppins";
+  cursor: pointer;
+}
+
+/* example grid */
+.example-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+}
+.example-card {
+  width: 100%;
+  padding: 10px;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 6px;
+  position: relative;
 }
