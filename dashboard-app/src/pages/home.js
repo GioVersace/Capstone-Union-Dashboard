@@ -8,6 +8,12 @@ const Home = () => {
     const [fetchError, setFetchError] = useState(null);
     const [examples, setExamples] = useState(null);
 
+    const handleDelete = (id) =>{
+      setExamples(previousExamples => {
+        return previousExamples.filter(ex => ex.id !== id)
+      })
+    }
+
     useEffect(() => {
       const fetchExamples = async () => {
         const { data,error } = await supabase// pulls from the database
@@ -38,7 +44,11 @@ const Home = () => {
             <div className = "examples-grid">
               {/* order-by buttons */}
               {examples.map(examples => (
-              <ExampleCard key={examples.id} example = {examples}/>
+              <ExampleCard 
+                key={examples.id} 
+                example = {examples}
+                onDelete={handleDelete}
+                />
             ))}
             </div>
 

@@ -31,6 +31,7 @@ const Create = () => {
     const { data, error } = await supabase// connect to the db and send the data
       .from('example_data')
       .insert([{ expenses, projAmnt, amntSpent, date, refCode, recCollected, cardUsed }])
+      .select()
 
     if(error){
       console.log(error)
