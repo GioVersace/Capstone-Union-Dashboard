@@ -31,7 +31,8 @@ const exampleCard = ({ example, onDelete }) => {
             <p>Amount Spent: { example.amntSpent }</p>
             <p>Date: { example.date }</p>
             <p>Receipt Collected: { example.recCollected }</p>
-            <p>Card Used: { example.cardUsed }</p>
+            <p>Payment Type: { example.cardUsed }</p>
+            <p>Account Number: { example.refCode }</p>
             <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 <Link to={'/' + example.id}>
                     Click Here To Update               

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --primary: #12bca2;
+  --primary: #FFB81C;
   --secondary: #6d15df;
 }
 h1,h2,h3 {
@@ -14,7 +14,7 @@ body {
   margin: 0;
   color: #333;
   font-family: 'Poppins';
-  background: #f2f2f2;
+  background: #003594;
 }
 nav {
   background: var(--primary);
@@ -22,12 +22,20 @@ nav {
   text-align: center;
 }
 nav a {
-  color: #f2f2f2;
+  color: #000000;
   margin: 10px;
   display: inline-block;
+
+}
+nav a:hover {
+  color: #cccc;
+  margin: 10px;
+  display: inline-block;
+
 }
 nav h1 {
-  color: #fff;
+  color: #000000;
+  font-size: 30px;
 }
 .page {
   max-width: 1200px;
@@ -75,4 +83,45 @@ form button {
   box-sizing: border-box;
   border-radius: 6px;
   position: relative;
+}
+
+/* Dropdown box css stuff*/
+.dropdown-container {
+  text-align: left;
+  border: 1px solid #ccc;
+  position: relative;
+  border-radius: 5px;
+}
+
+.dropdown-input {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.dropdown-menu {
+  position: absolute;  
+  transform: translateY(-4px);
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: auto;
+  max-height: 150px;
+  background-color: #fff;
+}
+
+.dropdown-item{
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover{
+  background-color: #9fc3f870;
+}
+
+.dropdown-item.selected {
+  background-color: #0d6efd;
+  color: #fff;
 }
