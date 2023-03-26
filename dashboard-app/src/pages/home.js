@@ -4,17 +4,9 @@ import PaginationTable from "../components/PaginationTable";
 
 
 const Home = () => {
-  const [cells, setCells] = useState([]);
+  const [cells, setCells] = useState(null);// sued to store the pulled info from supabase
 
-  const getData = async () => {
-    const temp = await supabase
-      .from("example_data")
-      .select() //IMPORTANT NOTE: WE ARE USING SUPABASE V2 SO WE MUST USE SELECT TO ACTUALLY HAVE THINGS HAPPEN WHEN WE GET THE DATA
-
-    setCells(temp);
-  }
-
-  const columns = useMemo(
+  const columns = useMemo(// colums for the table that we will use later
     () => [
       {
         Header: "Expenses",
@@ -52,13 +44,39 @@ const Home = () => {
     []
   );
 
+  /*
+    this method pulls the stuff from the database and updates cells where we will then send it into
+    the paginationTable js
+  */
   useEffect(() => {
-    getData();
-  },[]);
-  
+    const fetchExamples = async () => {
+      const { data,error } = await supabase// pulls from the database
+      .from('example_data')
+      .select()// have to use select because were in v2
+
+      if (error){
+        console.log(error)
+      }
+
+      if(data){
+        setCells(data);// resets the error to null if db retrieval is successful
+        console.log(cells)
+      }
+    }
+
+    fetchExamples()
+
+  }, [])
+
+  // updates data only when things change
   const data = useMemo(() => cells,[cells]);
   
-  return <>{cells && <PaginationTable columns={columns} data={data} />}</>;
+  return( 
+  <div>
+    {cells && <PaginationTable columns={columns} data={data} />}
+  </div>
+  
+  );
 }
   
   export default Home

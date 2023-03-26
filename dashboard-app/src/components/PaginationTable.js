@@ -6,7 +6,7 @@ import GlobalFilter from "./GlobalFilter";
 export default function PaginationTable({ columns, data }) {
     const defaultColumn = React.useMemo(
         () => ({
-          // Let's set up our default Filter UI
+          //  set up our default Filter UI
           Filter: ColumnFilter
         }),
         []
@@ -29,13 +29,13 @@ export default function PaginationTable({ columns, data }) {
     {
       columns,
       data,
-      initialState: { pageSize: 2 },
+      initialState: { pageSize: 10 },// sets the number of entries to a page...maybe change to a var that can be set?
       defaultColumn
     },
     
-    useFilters,
-    useGlobalFilter,
-    usePagination
+    useFilters,// used for column sorting
+    useGlobalFilter,// used for global sorting
+    usePagination// used to the pagnation of the table
   );
   const { globalFilter } = state;
 
