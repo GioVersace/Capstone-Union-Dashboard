@@ -11,9 +11,11 @@ function App() {
     <BrowserRouter>
     <nav>
       <h1>Dashboard App</h1>
-      <Link to="/">Home</Link>
-      <Link to="/create">Create New Entry</Link>
     </nav>
+    <h2>
+        <Link to="/">Home</Link>
+        <Link to="/create">Create New Entry</Link>
+    </h2>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/create" element={<Create />} />

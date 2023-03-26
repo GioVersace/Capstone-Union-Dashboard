@@ -1,63 +1,64 @@
 import supabase from "../config/supabaseClient"
-import { useEffect, useState } from "react"
-
-import ExampleCard from "../components/ExampleCard";
+import { useEffect, useState, React, useMemo } from "react"
+import PaginationTable from "../components/PaginationTable";
 
 
 const Home = () => {
-    const [fetchError, setFetchError] = useState(null);
-    const [examples, setExamples] = useState(null);
+  const [cells, setCells] = useState([]);
 
-    const handleDelete = (id) =>{
-      setExamples(previousExamples => {
-        return previousExamples.filter(ex => ex.id !== id)
-      })
-    }
+  const getData = async () => {
+    const temp = await supabase
+      .from("example_data")
+      .select() //IMPORTANT NOTE: WE ARE USING SUPABASE V2 SO WE MUST USE SELECT TO ACTUALLY HAVE THINGS HAPPEN WHEN WE GET THE DATA
 
-    useEffect(() => {
-      const fetchExamples = async () => {
-        const { data,error } = await supabase// pulls from the database
-        .from('example_data')
-        .select()
-
-        if (error){
-          setFetchError('Could not retrieve data')
-          setExamples(null)// if there is an error we do not want to display anything to the screen
-          console.log(error)
-        }
-
-        if(data){
-          setExamples(data);
-          setFetchError(null);// resets the error to null if db retrieval is successful
-        }
-      }
-
-      fetchExamples()
-
-    }, [])
-
-    return (
-      <div className="page home">
-        {fetchError && (<p>{fetchError}</p>)}
-        {examples && (
-          <div className="examples">
-            <div className = "examples-grid">
-              {/* order-by buttons */}
-              {examples.map(examples => (
-              <ExampleCard 
-                key={examples.id} 
-                example = {examples}
-                onDelete={handleDelete}
-                />
-            ))}
-            </div>
-
-
-
-          </div>
-        )}
-      </div>
-    )
+    setCells(temp);
   }
+
+  const columns = useMemo(
+    () => [
+      {
+        Header: "Expenses",
+        accessor: "expenses" // accessor is the "key" in the data
+      },
+      {
+        Header: "Subexpense",
+        accessor: "subExpense"
+      },
+      {
+        Header: "Projeected Amount",
+        accessor: "projAmnt"
+      },
+      {
+        Header: "Amount Spent",
+        accessor: "amntSpent"
+      },
+      {
+        Header: "Entry Date",
+        accessor: "date"
+      },
+      {
+        Header: "Transaction Date",
+        accessor: "transDate"
+      },
+      {
+        Header: "Account Number",
+        accessor: "refCode"
+      },
+      {
+        Header: "Payment Type",
+        accessor: "cardUsed"
+      }
+    ],
+    []
+  );
+
+  useEffect(() => {
+    getData();
+  },[]);
+  
+  const data = useMemo(() => cells,[cells]);
+  
+  return <>{cells && <PaginationTable columns={columns} data={data} />}</>;
+}
   
   export default Home

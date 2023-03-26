@@ -1,46 +1,67 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: 'Rubik', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+}
 
 :root {
   --primary: #FFB81C;
-  --secondary: #6d15df;
+  --secondary: #003594;
 }
 h1,h2,h3 {
-  margin: 0;
+  margin: 10;
 }
 
 body {
   margin: 0;
   color: #333;
   font-family: 'Poppins';
-  background: #003594;
+  background: #ececec;
 }
 nav {
-  background: var(--primary);
+  background: var(--secondary);
   padding: 10px 20px;
   text-align: center;
 }
 nav a {
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Rubik', sans-serif;
   color: #000000;
-  margin: 10px;
-  display: inline-block;
-
-}
-nav a:hover {
-  color: #cccc;
   margin: 10px;
   display: inline-block;
 
 }
 nav h1 {
+  background: var(--secondary);
+  font-family: 'Rubik', sans-serif;
+  font-weight: 400;
+  color: #fff;
+  font-size: 50px;
+}
+h2 {
+  background: var(--primary);
+  font-family: 'Rubik', sans-serif;
   color: #000000;
-  font-size: 30px;
+  font-size: 20px;  
+  padding: 5px 15px;
+  text-align: center;
+}
+h2 a:hover {
+  color: #cccc;
+  display: inline-block;
 }
 .page {
   max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
+}
+.logo{
+  background-repeat: no-repeat;
+  width: 600px;
+  height: 200px;
+  display: left;
 }
 
 /* forms */
@@ -124,4 +145,23 @@ form button {
 .dropdown-item.selected {
   background-color: #0d6efd;
   color: #fff;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  /* removing default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+  /* creating a custom design */
+  width: 1em;
+  height: 1em;
+  border-radius: 0.15em;
+  margin-right: 0.5em;
+  border: 0.15em solid #007a7e;
+  outline: none;
+  cursor: pointer;
+}
+
+input.checked {
+  background-color: #007a7e;
+  position: relative;
 }

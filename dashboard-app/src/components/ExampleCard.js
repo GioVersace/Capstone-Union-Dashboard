@@ -29,10 +29,14 @@ const exampleCard = ({ example, onDelete }) => {
             <h3>Expenses: { example.expenses }</h3>
             <p>Projected Amount: { example.projAmnt }</p>
             <p>Amount Spent: { example.amntSpent }</p>
-            <p>Date: { example.date }</p>
+            <p>Entry Date: { example.date }</p>
+            <p>Transaction Date: { example.transDate }</p>
             <p>Receipt Collected: { example.recCollected }</p>
             <p>Payment Type: { example.cardUsed }</p>
             <p>Account Number: { example.refCode }</p>
+            <p>Black Owned Business: { example.isBlackOwned }</p>
+            <p>Woman Owned Business: { example.isWomanOwned }</p>
+            <p>Locally Owned Business: { example.isLocal }</p>
             <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 <Link to={'/' + example.id}>
                     Click Here To Update               
