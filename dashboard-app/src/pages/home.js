@@ -17,7 +17,7 @@ const Home = () => {
         accessor: "subExpense"
       },
       {
-        Header: "Projeected Amount",
+        Header: "Projected Amount",
         accessor: "projAmnt"
       },
       {
