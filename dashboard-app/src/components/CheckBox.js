@@ -11,8 +11,10 @@ const Checkbox = ({ label, checked, onChange }) => {
   return (
     <div className="checkbox-wrapper">
         <label>
-            <input type="checkbox" className={isChecked ? "checked" : ""} checked={isChecked} onChange={() => onClick()}/>
-            {label}
+
+        {label} 
+        <input type="checkbox" className={isChecked ? "checked" : ""} checked={isChecked} onChange={() => onClick()}/>
+            
         </label>                      
     </div>
   );
