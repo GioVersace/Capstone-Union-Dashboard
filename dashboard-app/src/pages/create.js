@@ -285,7 +285,7 @@ const Create = () => {
           required/>
         <br />
 
-        <label>What Businesses are receiveing this Funding? (Check all that apply):</label>
+        <label>What Businesses are receiving this Funding? (Check all that apply):</label>
         <CheckBox label="Black Owned Businesses" checked={false} onChange={(value) => setIsBlackOwned(value)}/>
         <CheckBox label="Woman Owned Businesses" checked={false} onChange={(value) => setIsWomanOwned(value)}/> {/* I literally have no idea why value is the opposite of what it needs to be but whatever*/}
         <CheckBox label="Locally Sourced" checked={false} onChange={(value) => setIsLocal(value)}/>

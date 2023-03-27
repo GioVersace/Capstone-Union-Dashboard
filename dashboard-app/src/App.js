@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import Home from "./pages/home"
 import Create from "./pages/create"
 import Update from "./pages/update"
+import Chart from "./pages/charts"
 
 function App() {
   return (
@@ -13,13 +14,15 @@ function App() {
       <h1>Dashboard App</h1>
     </nav>
     <h2>
-        <Link to="/">Home</Link>
-        <Link to="/create">Create New Entry</Link>
+        <Link to="/">Home </Link>
+        <Link to="/create">Create New Entry </Link>
+        <Link to="/charts">View Charts</Link>
     </h2>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/create" element={<Create />} />
       <Route path="/:id" element={<Update />} />
+      <Route path="/charts" element={<Chart />} />
     </Routes>
   </BrowserRouter>
   );
