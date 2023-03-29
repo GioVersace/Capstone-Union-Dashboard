@@ -4,6 +4,7 @@ import ColumnFilter from "./ColumnFilter";
 import GlobalFilter from "./GlobalFilter";
 
 export default function PaginationTable({ columns, data }) {
+
     const defaultColumn = React.useMemo(
         () => ({
           //  set up our default Filter UI
@@ -11,6 +12,9 @@ export default function PaginationTable({ columns, data }) {
         }),
         []
       );
+
+
+      
 
   // Use the useTable Hook to send the columns and data to build the table
   const {
@@ -29,7 +33,7 @@ export default function PaginationTable({ columns, data }) {
     {
       columns,
       data,
-      initialState: { pageSize: 10 },// sets the number of entries to a page...maybe change to a var that can be set?
+      initialState: { pageSize: 5 },// sets the number of entries to a page...maybe change to a var that can be set?
       defaultColumn
     },
     
@@ -40,8 +44,8 @@ export default function PaginationTable({ columns, data }) {
   const { globalFilter } = state;
 
   return (
-    <div className="items-center">
-        <div className="gap-x-2 relative inline-flex items-center px-2 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+    <div className="justify-center">
+        <div className="gap-x-2 relative inline-flex items-center px-2 py-2 border border-gray-500 bg-gray-200 text-sm font-medium text-gray-500 ">
             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         </div>
 
@@ -51,11 +55,11 @@ export default function PaginationTable({ columns, data }) {
                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                         <table {...getTableProps()} className="min-w-full divide-y divide-gray-200">
-                        <thead className="bg-gray-50">
+                        <thead className="bg-gray-100">
                             {headerGroups.map((headerGroup) => (
                             <tr {...headerGroup.getHeaderGroupProps()}>
                                 {headerGroup.headers.map((column) => (
-                                <th scope="col" className="px-6 py-3 text-center text-sm font-bold text-gray-700 uppercase tracking-wider" {...column.getHeaderProps()}>
+                                <th scope="col" className="px-6 py-3 text-center border border-gray-300 text-sm font-bold text-gray-700 uppercase tracking-wider" {...column.getHeaderProps()}>
                                     {column.render("Header")}
                                     <div>{column.canFilter ? column.render("Filter") : null}</div>
                                 </th>
@@ -82,15 +86,16 @@ export default function PaginationTable({ columns, data }) {
             </div>
         </div>
 
-
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-            Previous page{" "}
-        </button>
-        <button onClick={() => nextPage()} disabled={!canNextPage}>
-            Next page{" "}
-        </button>
-
-
+        <div className="inline-flex">
+            <button onClick={() => previousPage()} disabled={!canPreviousPage} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Prev
+            </button>
+            <button onClick={() => nextPage()} disabled={!canNextPage} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Next
+            </button>
+            
+            
+        </div>
 
     </div>
   );

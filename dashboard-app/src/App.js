@@ -13,10 +13,12 @@ function App() {
     <nav>
       <h1>Dashboard App</h1>
     </nav>
-    <h2>
+    <h2 className='justify-center space-x-4 '>
         <Link to="/">Home </Link>
+     
         <Link to="/create">Create New Entry </Link>
-        <Link to="/charts">View Charts</Link>
+    
+        <Link to="/charts">View Charts</Link>        
     </h2>
     <Routes>
       <Route path="/" element={<Home />} />
