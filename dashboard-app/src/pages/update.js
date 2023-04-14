@@ -2,7 +2,6 @@ import { useParams,useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import supabase from "../config/supabaseClient"
 import Dropdown from "../components/dropDownBox"
-import { getCurrentDate } from "../components/currentDate"
 import CheckBox from '../components/CheckBox';
 
 const Update = () => {
@@ -73,6 +72,7 @@ const Update = () => {
         setProjAmnt(data.projAmnt)
         setAmntSpent(data.amntSpent)
         setDate(data.date)
+        setTransDate(data.transDate)
         setRefCode(data.refCode)
         setRecCollected(data.recCollected)
         setCardUsed(data.cardUsed)
@@ -281,7 +281,7 @@ const Update = () => {
           />
 
           <label htmlFor="cardUsed'">Payment Type:</label>
-          <Dropdown placeHolder="Select..." options={options} onChange={(value) => setCardUsed(value)}/>
+          <Dropdown placeHolder={cardUsed} options={options} onChange={(value) => setCardUsed(value)}/>
           <br />
 
           <label>What Businesses are receiveing this Funding? (Check all that apply):</label>

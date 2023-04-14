@@ -72,7 +72,7 @@ const Home = () => {
 
     fetchExamples()
 
-  }, [cells])
+  }, [])
 
   // updates data only when things change
   const data = useMemo(() => cells,[cells]);
@@ -94,8 +94,7 @@ const Home = () => {
       </Link>
       
     </button>
-    </div>
-    
+    </div>   
   </div> 
   
   );
