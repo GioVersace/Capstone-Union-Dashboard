@@ -162,3 +162,7 @@ input.checked {
   background-color: #007a7e;
   position: relative;
 }
+
+.notInvisible{
+  background-color: green;
+}
