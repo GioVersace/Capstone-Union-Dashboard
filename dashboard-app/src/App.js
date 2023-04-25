@@ -1,33 +1,13 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
-import React, { useState, useEffect } from 'react';
-
 
 //pages
 import Home from "./pages/home"
 import Create from "./pages/create"
 import Update from "./pages/update"
 import Chart from "./pages/charts"
-import Login from "./pages/Login"
-import Homepage from "./pages/secureHome"
-import Register from "./pages/register"
-
-
 
 function App() {
-  const [token, setToken] = useState(false)
-
-  if(token){
-    sessionStorage.setItem('token',JSON.stringify(token))
-  }
-
-  useEffect(() => {
-    if(sessionStorage.getItem('token')){
-      let data = JSON.parse(sessionStorage.getItem('token'))
-      setToken(data)
-    }
-    
-  }, [])
   return (
     <BrowserRouter>
     <nav>
@@ -41,12 +21,10 @@ function App() {
         <Link to="/charts">View Charts</Link>        
     </h2>
     <Routes>
-      <Route path="/" element={<Login setToken={setToken}/> } />
-      {token?<Route path={"/create"} element={<Create token={token}/>} />:""}
+      <Route path="/" element={<Home />} />
+      <Route path="/create" element={<Create />} />
       <Route path="/:id" element={<Update />} />
-      {token?<Route path={"/charts"} element={<Chart token={token}/>} />:""}
-      {token?<Route path={'/home'} element={ <Home token={token} />} />:""}
-      <Route path="/register" element={<Register />} />
+      <Route path="/charts" element={<Chart />} />
     </Routes>
   </BrowserRouter>
   );
